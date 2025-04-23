@@ -10,9 +10,13 @@ Route::get('/', function () {
 
 Route::get('/posts',[PostController::class,'index']);
 Route::get('/posts/create',[PostController::class,'create']);
+Route::post('/posts',[PostController::class,'store']);
 Route::get('/posts/{post}',[PostController::class,'show']);
+Route::get('/posts/{post}/edit',[PostController::class,'edit']);
+Route::put('/posts/{post}',[PostController::class,'update']);
+Route::delete('/posts/{post}',[PostController::class,'destroy']);
 
-Route::get('prueba', function(){
+//Route::get('prueba', function());
     //return "Hola desde la ruta prueba";
 
     /*$post = new Post;
@@ -47,13 +51,11 @@ Route::get('prueba', function(){
 
     return $post;*/
 
-    $post = Post::find(4);
+    // $post = Post::find(4);
 
-    $post -> delete();
+    // $post -> delete();
 
-    return "Eliminado correctamente";
-
-});
+    // return "Eliminado correctamente";
 
 // Route::get('/{post}/{category?}', function ($post, $category = null) {
 

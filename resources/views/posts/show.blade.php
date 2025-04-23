@@ -6,6 +6,18 @@
     <title>Laravel 12 | posts</title>
 </head>
 <body>
-    <h1>Aca se va a mostrar un post {{$post}}</h1>
+    <a href="/posts">volver a post</a>
+
+    <h1>Titulo: {{$post->title}}</h1>
+    <p><b>Categoria:</b>{{$post->category}}</p>
+    <p>{{$post->content}}</p>
+    <br>
+    <a href="/posts/{{$post->id}}/edit">Actualizar Post</a>
+    <br>
+    <form action="/posts/{{$post->id}}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit">Eliminar Post</button>
+    </form>
 </body>
 </html>
