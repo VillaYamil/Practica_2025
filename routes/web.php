@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Models\Post;
+use App\Models\Phone;
+use App\Models\User;
 
 Route::get('/', function () {
     return 'Hola perreques';
@@ -15,6 +17,21 @@ Route::get('/posts/{post}',[PostController::class,'show']);
 Route::get('/posts/{post}/edit',[PostController::class,'edit']);
 Route::put('/posts/{post}',[PostController::class,'update']);
 Route::delete('/posts/{post}',[PostController::class,'destroy']);
+
+Route::get('/prueba', function () {
+    $user = User::create([
+        'name' => 'Villa Yamil',
+        'email' => 'yamil.gchu@gmail.com',
+        'password' => bcrypt('12345678')
+    ]);
+
+    Phone::create([
+        'number' => '123456789',
+        'user_id' => $user->id
+    ]);
+
+    return 'Usuario y teléfono creados';
+});
 
 //Route::get('prueba', function());
     //return "Hola desde la ruta prueba";
@@ -67,3 +84,4 @@ Route::delete('/posts/{post}',[PostController::class,'destroy']);
 
 // });
 
+   
